@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>ajax</title>
+	<!-- 引入jQuery.js -->
+	<script type="text/javascript" src="./jquery-3.4.1.min.js"></script>
+</head>
+<body>
+	<!-- 渲染页面 -->
+	<!-- 从服务器接收到的数据是: -->
+	<div id="app">
+		
+	</div>
+<!-- 使用jQuery发送ajax -->
+<script type="text/javascript">
+	$(function(){
+		$.ajax({
+			url:'http://127.0.0.1/ceshi/test.php',
+			type:'get',
+			dataType:'json',
+			success:function(resp){
+				//从服务器接受数据，渲染到页面
+				$('#app').html(resp.name);
+				
+			}
+		})
+	})
+</script>
+</body>
+</html>

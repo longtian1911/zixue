@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>vue</title>
+	<!-- 1、引入vue.js -->
+	<script type="text/javascript" src="./node_modules/vue/dist/vue.js"></script>
+</head>
+<body>
+<!-- 2、编写页面元素，方式图 -->
+<div id="app">
+	在这里输入的内容会显示在下面:<input type="text" name="" v-model="msg">
+	<h3>{{msg}}</h3>
+</div>
+<!-- 3、创建vue实例 -->
+<script type="text/javascript">
+	const vm = new Vue({
+		el:'#app', //vue操作id为app的页面
+		data:{
+			msg:''
+		},//数据
+		methods:{
+
+		},//方法
+	})
+</script>
+</body>
+</html>

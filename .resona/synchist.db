@@ -1,0 +1,41 @@
+{
+    "": {
+        "sync_id": "1563543390102",
+        "sync_time": "1563543391381",
+        "from": "82",
+        "op": "43",
+        "path": "www",
+        "path_2nd": "???",
+        "type": "68",
+        "size": "0",
+        "patched_time": "1563543391376",
+        "err_code": "0",
+        "err_msg": ""
+    },
+    "": {
+        "sync_id": "1563543346427",
+        "sync_time": "1563543346789",
+        "from": "82",
+        "op": "45",
+        "path": "mac",
+        "path_2nd": "",
+        "type": "68",
+        "size": "0",
+        "patched_time": "1563543346783",
+        "err_code": "0",
+        "err_msg": ""
+    },
+    "": {
+        "sync_id": "1563526811043",
+        "sync_time": "1563526811671",
+        "from": "82",
+        "op": "43",
+        "path": "mac",
+        "path_2nd": "???",
+        "type": "68",
+        "size": "0",
+        "patched_time": "1563526811667",
+        "err_code": "0",
+        "err_msg": ""
+    }
+}

@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<title>单文件上传</title>
+</head>
+<body>
+	<form name="form1" method="post" enctype="multipart/form-data" action="upload.php">
+		产品标题: <input type="text" name="title"> <br>
+		上传产品图片：<input type="file" name="uploadFile"><br>
+		<input type="submit" value="提交">
+		<input type="hidden" name="token" value="upload">
+	</form>
+</body>
+</html>
