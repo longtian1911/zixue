@@ -18,6 +18,14 @@ class Man{
 			$girl->dongjie();
 		}
 	}
+
+	//删除观察者方法
+	public function delObserver($observer){
+		//查找对应值在数组 中的建
+		$key = array_search($observer, $this->observers);
+		//根据建删除数组的值，并且数组重新索引
+		array_splice($this->observers, $key, 1);
+	}
 }
 
 class GirlFriend{
@@ -25,3 +33,43 @@ class GirlFriend{
 		echo "男朋友正在花钱，麻烦冻结他的银行卡";
 	}
 }
+
+
+//创建对象
+$xiaoming = new Man();
+$xiaohua = new GirlFriend();
+$xiaoli = new GirlFriend();
+//添加观察者
+$xiaoming->addObserver($xiaohua);
+$xiaoming->addObserver($xiaoli);
+
+//删除观察者
+$xiaoming->delObserver($xiaohua);
+
+//买东西测试观察者有没有生效
+$xiaoming->buy();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
