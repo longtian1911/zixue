@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		.box{
+			width: 1050px;
+			border: 1px solid red;
+			margin: 0 auto;
+		}
+		.box button {
+			width: 120px;
+			margin-top: 20px;
+			height: 50px;
+			font-size: 20px;
+			margin-left: 20px;
+		}
+		.box div {
+			margin-top: 20px;
+			width: 1050px;
+			height: 500px;
+			font-size: 40px;
+			text-align: center;
+			background-color: pink;
+			display: none;
+		}
+		.box .show {
+			display: block;
+		}
+		.box .active {
+			width: 140px;
+			background-color: tomato;
+		}
+	</style>
+</head>
+<body>
+	<div class="box" id="box">
+		<button>⬅️</button>
+		<button class="active">周杰伦</button>
+		<button>林俊杰</button>
+		<button>刘德华</button>
+		<button>张学友</button>
+		<button>陈奕迅</button>
+		<button>➡️</button>
+		<div class="show">
+			双节棍、千里之外、七里香
+		</div>
+		<div>曹操、豆浆油条、江南</div>
+		<div>爱你一万年、冰雨、男人哭吧不是罪</div>
+		<div>吻别、情书、饿狼传说</div>
+		<div>十年、爱情呼叫转移、浮夸</div>
+	</div>
+</body>
+<script>
+	//获取中间所有的button
+	var aButton = document.getElementsByTagName('button');
+	//定义一个空数据，存放中间所有的按钮
+	var aBtn = [];
+	for (var i = 1; i < aButton.length - 1; i++) {
+		aBtn.push(aButton[i]);
+	}
+	//用来记录当前选中的是哪个按钮和div
+		var number = 0;
+	//获取所有的div
+	var oBox = document.getElementById('box');
+	var aDiv = oBox.getElementsByTagName('div');
+	console.log(aDiv);
+	//给所有的button添加点击事件
+	for (var i = 0; i < aBtn.length; i++) {
+		//将当前的i值保存到自定义的属性中
+		aBtn[i].index = i;
+		aBtn[i].onclick = function(){
+			//首先将所有的button和div样式全部清空
+			for (var j = 0; j < aBtn.length; j++) {
+				aBtn[j].className = '';
+				aDiv[j].className = '';
+			}
+			//给当前的button和对应的div添加样式
+			this.className = 'active';
+			aDiv[this.index].className = 'show';
+			//跟新number值
+			number = this.index;
+		}
+		
+		//获取第一个按钮和最后一个按钮
+		var oPre = aButton[0];
+		var oNext = aButton[aButton.length - 1];
+		oPre.onclick = function(){
+			number--;
+			if (number == -1) {
+				number = aBtn.length - 1;
+			}
+			for(var i = 0; i < aBtn.length; i++){
+				aBtn[i].className = '';
+				aDiv[i].className = '';
+			}
+			aBtn[number].className = 'active';
+			aDiv[number].className = 'show';
+		}
+
+		oNext.onclick = nextt;
+
+		function nextt(){
+			number++;
+			if (number == aBtn.length) {
+				number = 0;
+			}
+			for(var i = 0; i < aBtn.length; i++){
+				aBtn[i].className = '';
+				aDiv[i].className = '';
+			}
+			aBtn[number].className = 'active';
+			aDiv[number].className = 'show';
+		}
+
+	}
+	//定义一个全局的定时器对象
+		var timer = null;
+		timer = setInterval(nextt, 1000);
+		oBox.onmousemove = function(){
+			clearInterval(timer);
+		}
+		oBox.onmouseout = function(){
+			timer = setInterval(nextt, 1000);
+		}
+</script>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
