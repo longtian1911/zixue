@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>运动</title>
+</head>
+<body>
+	<div style="width: 200px;height: 200px;background-color: red;position: absolute;" id="div"></div>
+</body>
+</html>
+<script>
+	var oDiv = document.getElementById('div');
+	oDiv.onclick = function(){
+		move(this, 'left', 500, 3000);
+	}
+
+	function move(obj, name, target, time){
+		//计算一共走多少次
+		var count = Math.ceil(time / 30);
+		//计算差值
+		var start = parseFloat(getStyle(obj, name));
+		var dis = target - start;
+		//可以计算出来一次走多少
+		var each = dis / count;
+		//计数器
+		var n = 0;
+		//添加定时器
+		var timer = setInterval(function(){
+			n++;
+			//计算现在的属性应该为多少
+			obj.style[name] = start + n * each + 'px';
+			if (n >= count) {
+				//当计数器大于等于总个数的时候销毁定时器
+				clearInterval(timer);
+			}
+		}, 30);
+	}
+
+	function getStyle(obj,name){
+		return obj.currentStyle ? obj.currentStyle[name] : getComputedStyle(obj, null)[name];
+	}
+</script>
