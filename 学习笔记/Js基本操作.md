@@ -176,7 +176,19 @@ return false  在函数中添加return false   然后再onclick中  return demo(
 
 销毁周期性定时器：clearInterval(timer);
 
+### 懒加载
 
+```
+测试前提：都要在h5标准下进行 <!DOCTYPE html>
+oDiv.offsetWidth //获取div宽度
+oDiv.offsetHeight //获取div高度
+oDiv.offsetTop //距离网页上面的高度
+oDiv.offsetLeft //距离网页左面的宽度
+document.documentElement.clientHeight //可视区高度
+document.documentElement.clientWidht //可视区宽度
+var scrollTop = document.documentElement.scrollTop||document.body.scrollTop; //卷起高度，两者都可以，但是有兼容性问题，这样书写可以解决大部分浏览器的问题
+window.onscroll = function(){} //当右侧滚动条滚动时触发该事件
+```
 
 
 
