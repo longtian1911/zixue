@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>瀑布流</title>
+	<style>
+		.box{
+			width: 1000px;
+			border: 1px solid blue;
+			margin: 0 auto;
+			overflow: hidden;
+		}
+		.box div{
+			float: left;
+		}
+		li{
+			width: 300px;
+			margin-left: 20px;
+			text-align: center;
+			font-size: 50px;
+			font-weight: bold;
+			list-style: none;
+			background-color: pink;
+			border: 1px solid red;
+		}
+	</style>
+</head>
+<body>
+	<div class="box" id="box">
+		<div></div>
+		<div></div>
+		<div></div>
+	</div>
+</body>
+</html>
+<script>
+	var oBox = document.getElementById('box');
+	var aTmp = oBox.getElementsByTagName('div');
+	//定义一个临时数组
+	var aDiv = [];
+	for(var i = 0; i < aTmp.length; i++){
+		aDiv.push(aTmp[i]);
+	}
+	//创建li标签
+	createLi();
+	//实现自动加载
+	window.onscroll = function(){
+		//获取卷起的高度
+		var scrollTop = document.documentElement.scrollTop||document.body.scrollTop; 
+		//获取可视区的高度
+		var height = document.documentElement.clientHeight;
+		//获取整个内容的高度
+		var contentHeight = document.documentElement.scrollHeight;
+		//当滚动条到最下面的时候创建新的标签
+		if (scrollTop + height >= contentHeight) {
+			createLi();
+		}
+	};
+
+	function createLi(){
+		for(var i = 0; i < 20; i++){
+			var oLi = document.createElement('li');
+			var height = rand(100,300) + 'px';
+			oLi.style.height = height;
+			oLi.style.lineHeight = height;
+			oLi.innerHTML = i;
+			//将li标签添加到最短高度的div中
+			var a = aDiv.sort(function(a,b){
+				return a.offsetHeight - b.offsetHeight;
+			});
+			a[0].appendChild(oLi);
+		}
+	}
+
+	//产生随机数
+	function rand(n,m){
+		return parseInt(Math.random() * (m - n)) + n;
+	}
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

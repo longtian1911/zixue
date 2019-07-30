@@ -190,9 +190,14 @@ var scrollTop = document.documentElement.scrollTop||document.body.scrollTop; //�
 window.onscroll = function(){} //当右侧滚动条滚动时触发该事件
 ```
 
+## 随机数
 
-
-
+```
+随机产生n到m的随机数
+function rand(n,m){
+return parseInt(Math.random() * (m - n)) + m;
+}
+```
 
 
 
