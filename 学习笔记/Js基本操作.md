@@ -199,6 +199,68 @@ return parseInt(Math.random() * (m - n)) + m;
 }
 ```
 
+## ajax
+
+```
+1、创建对象
+var xhr = new XMLHttpRequest(); //主流浏览器中创建ajax对象
+get请求
+//参数一：请求方式，参数二：请求地址
+xhr.open('get','1.php?username=goudan');
+//send：发送请求
+xhr.send();
+post请求
+xhr.open('post', '1.php');
+//在send函数中写post要传递的参数字符串
+//注意，如果要以post方式请求，必须要设置这个函数
+xhr.setRequestHeader('content-type', 'application/x-www-form-urlencoded');
+xhr.send('username=goudan&pwd=123');
+onreadystatechange :当ajax状态改变的时候出发这个时间
+readyState ：ajax的状态，对我们有用的就是4
+0：初始化   1：执行了open方法  2：执行了send方法  3：得到了部分响应的数据  4：得到了全部响应的数据
+status ：获取heep的状态码，当状态码为200的时候，来得到响应的数据
+responseText：获取到交互的数据一般json格式
+将返回的json字符串转化为js对象
+var obj = JSONparse(xhr.responseText);
+将js对象转化为json格式的字符串
+JSON.stringify(obj);
+同步和异步：
+第三个参数：是否异步
+同步的时候，事件绑定函数必须在open的上面
+异步的时候，事件绑定函数在哪都可以，所以都放到open的上面
+xhr.open('post','goudan.php',false);
+ajax去请求数据的时候，js这一端的代码是否要接着执行还是要等着ajax的结果
+同步：必须等着ajax的结果，才能接着乡下执行
+异步：使用的居多，而且效率要比同步的效率高
+
+跨域
+两种方法：
+1、header头设置(在请求的文件中使用，不常用)
+header('Access-Control-Allow-Origin:*');
+2、使用jsonp
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

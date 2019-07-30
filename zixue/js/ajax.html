@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>ajax</title>
+</head>
+<body>
+	
+</body>
+<script>
+	//创建对象
+	var xhr = new XMLHttpRequest();
+	xhr.onreadystatechange = function(){
+		if (xhr.readyState == 4) {
+			if (xhr.status == 200) {
+				success(xhr.responseText);
+			}
+		}
+	}
+	// post请求
+	xhr.open('post', '1.php');
+	xhr.setRequestHeader('content-type', 'application/x-www-form-urlencoded');
+	xhr.send('demo=lala&test=huhu');
+	
+	function success(data){
+		//将返回的数据转化为js对象
+		var obj =JSON.parse(data);
+		alert(obj.name);
+	}
+	//get请求
+	/*
+	xhr.open('get', '1.php?username=goudan&pwd=123456');
+	xhr.send();
+	*/
+</script>
+</html>
