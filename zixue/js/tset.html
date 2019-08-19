@@ -1,0 +1,32 @@
+<!--
+ * @Descripttion: 这是一个文件
+ * @version: 1.0.0
+ * @Author: 爱唯主机
+ * @link: https://www.aiweiidc.com
+ * @Date: 2019-08-02 10:05:50
+ * @LastEditors: 爱唯主机
+ * @LastEditTime: 2019-08-18 11:39:08
+ -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function a(){
+            var i = 1;
+            function b(){
+                console.log(i++);
+            }
+            return b;
+        }
+        var bb = a();
+        bb();
+        //bb();
+    </script>
+</body>
+</html>

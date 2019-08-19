@@ -1,0 +1,85 @@
+<!--
+ * @Descripttion: 这是一个文件
+ * @version: 1.0.0
+ * @Author: 爱唯主机
+ * @link: https://www.aiweiidc.com
+ * @Date: 2019-08-19 10:19:53
+ * @LastEditors: 爱唯主机
+ * @LastEditTime: 2019-08-19 11:28:17
+ -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            border: 0 none;
+        }
+        div{
+            width: 600px;
+            height: 400px;
+            margin: 10px auto;
+            position: relative;
+        }
+        img{
+            position: absolute;
+            z-index: 1;
+        }
+        img:first-child{
+            z-index: 3;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <img src="./images/1.jpg" alt="" >
+        <img src="./images/2.jpg" alt="" >
+        <img src="./images/3.jpg" alt="" >
+        <img src="./images/4.jpg" alt="" >
+        <img src="./images/5.jpg" alt="" >
+        <img src="./images/6.jpg" alt="" >
+    </div>
+</body>
+</html>
+<script>
+    var imags = document.getElementsByTagName('img');
+    var outIndex = 0;
+    var inIndex = 1;
+    setInterval(function(){
+        
+        if(outIndex >= imags.length){
+            outIndex = 0;
+        }
+        if(inIndex >= imags.length){
+            inIndex = 0;
+        }
+        imags[outIndex].style.zIndex = 2;
+        imags[inIndex].style.zIndex = 3;
+        change(imags[inIndex]);
+        outIndex++;
+        inIndex++
+    }, 2000);
+    
+    //自定义函数，完成透明度慢慢的变化的过程
+    function change(ele){
+        //先让图片的透明度变为0 
+        ele.style.opacity = 0;
+        //让图片的透明度慢慢变为1
+        for(var i = 1; i <= 20; i++){
+            (function(x){
+                setTimeout(function(){
+                    ele.style.opacity = 0.05*x;
+                    if(x == 20){
+                        //设置原来的图片zIndex为1
+                        imags[outIndex - 1].style.zIndex = 1;
+                    }
+                }, 50*x);
+            })(i);
+        }
+    }
+</script>

@@ -1,0 +1,143 @@
+<!--
+ * @Descripttion: 这是一个文件
+ * @version: 1.0.0
+ * @Author: 爱唯主机
+ * @link: https://www.aiweiidc.com
+ * @Date: 2019-08-15 11:30:52
+ * @LastEditors: 爱唯主机
+ * @LastEditTime: 2019-08-15 13:26:06
+ -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            border: 0 none;
+        }
+        table, th, td{
+            border: 1px solid #1b272e;
+            border-collapse: collapse; /*合并边框*/
+        }
+        table{
+            width: 400px;
+            margin: 10px auto;
+        }
+        th,td{
+            width: 50%;
+            padding:3px;
+        }
+    </style>
+</head>
+<body>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>姓名</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>刘丽</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>刘丽</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>刘丽</td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>刘丽</td>
+            </tr>
+            <tr>
+                <td>5</td>
+                <td>刘丽</td>
+            </tr>
+            <tr>
+                <td>6</td>
+                <td>刘丽</td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+<script>
+    // 兼容各个浏览器的获取完整css样式的写法
+    //参数一：为节点对象， 参数二：需要获取的css属性
+    function getStyle(node,styleName){
+        //currentStyle只能获取ie的 另一个可以获取谷歌和火狐的
+       if(node.currentStyle){
+           return node.currentStyle[styleName];
+       }else{
+           return getComputedStyle(node)[styleName];
+       }
+    }
+    //隔行换色
+    //找到所有的tbody中的tr
+    var trs = document.querySelectorAll('tbody tr');
+    for(var i = 0; i < trs.length; i++){
+        if(i%2 == 0){
+            trs[i].style.backgroundColor = '#d4d4d4';
+        }
+    }
+
+    //找姓名所在的td
+    var tds = document.querySelectorAll('tbody td:nth-child(2n)');
+    for(var i = 0; i < tds.length; i++){
+        //为每个td绑定单击事件
+        tds[i].onclick = function(){
+            //创建一个input，设置input的样式和td的样式一样
+            //判断如果当前td中有一个input就不要执行下面的代码了
+            if(this.children.length >= 1){
+                return false;
+            }
+            //保存td中的文本
+            var text = this.innerText;
+            //清空td
+            this.innerHTML = '';
+            //创建input
+            var input = document.createElement('input');
+           
+            //input的value值应该是当前td的文本
+            input.value = text;
+            //把input放到td中
+            this.appendChild(input);
+            input.style.width = getStyle(this, 'width');
+            input.style.height = getStyle(this, 'height');
+            input.style.backgroundColor = getStyle(this, 'backgroundColor');
+            input.style.fontSize = getStyle(this, 'fontSize');
+            input.style.outline = 'none';
+            //input获取焦点
+            input.focus();
+            var td = this;
+            //绑定键盘事件
+            input.onkeyup = function(evt){
+                var e = window.event || evt;
+                var keyCode = e.keyCode;
+                if(keyCode == 13){
+                   td.innerHTML =  '';
+                   td.innerHTML =  this.value;
+                }
+                if(keyCode == 27){
+                    //按esc健表示取消
+                    td.innerHTML =  '';
+                    td.innerHTML = text;
+                }
+            }
+            //失去焦点取消
+            input.onblur = function(){
+                td.innerHTML = text;
+            }
+        }
+    }
+</script>
+</html>

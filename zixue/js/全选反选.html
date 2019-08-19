@@ -1,0 +1,88 @@
+<!--
+ * @Descripttion: 这是一个文件
+ * @version: 1.0.0
+ * @Author: 爱唯主机
+ * @link: https://www.aiweiidc.com
+ * @Date: 2019-08-12 09:04:02
+ * @LastEditors: 爱唯主机
+ * @LastEditTime: 2019-08-12 09:35:22
+ -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <p align='center'>
+        <a href="javascript:void(0)" id="quanxuan">全选</a>
+        <a href="javascript:void(0)" id="fanxuan">反选</a>
+        <a href="javascript:void(0)" id="quxiao">取消</a>
+    </p>
+    <table border="1" cellpadding='2' cellspacing='0' rules='all' align="center" width='500'>
+        <tr>
+            <th>ID</th>
+            <th>标题</th>
+        </tr>
+        <tr>
+            <td>
+                <input type="checkbox" name="id[]" id="" value="1">
+            </td>
+            <td>
+                诸葛亮是一个医学家
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input type="checkbox" name="id[]" id="" value="1" checked>
+            </td>
+            <td>
+                诸葛亮是一个医学家
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input type="checkbox" name="id[]" id="" value="1">
+            </td>
+            <td>
+                诸葛亮是一个医学家
+            </td>
+        </tr>
+    </table>
+</body>
+<script>
+    //全选
+    //选择a标签，然后绑定单击事件
+    document.getElementById('quanxuan').onclick = function(){
+        //点击全选之后给input标签加入checked
+        var ip = document.querySelectorAll('input');
+        for(var i=0; i < ip.length; i++){
+            ip[i].checked = true;
+        }
+    }
+
+    //取消
+    document.getElementById('quxiao').onclick = function(){
+        //点击全选之后给input标签加入checked
+        var ip = document.querySelectorAll('input');
+        for(var i=0; i < ip.length; i++){
+            ip[i].checked = false;
+        }
+    }
+
+    //反选
+    document.getElementById('fanxuan').onclick = function(){
+        //点击全选之后给input标签加入checked
+        var ip = document.querySelectorAll('input');
+        for(var i=0; i < ip.length; i++){
+            if(ip[i].checked === true){
+                ip[i].checked = false;
+            }else{
+                ip[i].checked = true;
+            }
+        }
+    }
+</script>
+</html>

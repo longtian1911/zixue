@@ -1,17 +1,10 @@
 <?php
 namespace app\index\controller;
 
-use think\Controller;
-
-class Index extends Controller
+class Index
 {
     public function index()
     {
-        return view('index@index/index');
+        return '这是tp';
     }
-
-    public function demo() {
-        dump($_SERVER);
-    }
-
 }
